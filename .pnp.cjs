@@ -50,6 +50,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.5.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:18.3.1"],\
+          ["react-icons", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.5.0"],\
           ["react-router-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:7.6.1"],\
           ["recoil", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:0.7.7"],\
           ["tailwindcss", "npm:4.1.8"],\
@@ -1834,6 +1835,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.5.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:18.3.1"],\
+          ["react-icons", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.5.0"],\
           ["react-router-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:7.6.1"],\
           ["recoil", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:0.7.7"],\
           ["tailwindcss", "npm:4.1.8"],\
@@ -4769,6 +4771,28 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:18.3.1"],\
           ["scheduler", "npm:0.23.2"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-icons", [\
+      ["npm:5.5.0", {\
+        "packageLocation": "./.yarn/cache/react-icons-npm-5.5.0-906730a3cf-a24309bfc9.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["react-icons", "npm:5.5.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.5.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-icons-virtual-e72e572d7a/0/cache/react-icons-npm-5.5.0-906730a3cf-a24309bfc9.zip/node_modules/react-icons/",\
+        "packageDependencies": [\
+          ["@types/react", "npm:18.3.23"],\
+          ["react", "npm:18.3.1"],\
+          ["react-icons", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.5.0"]\
         ],\
         "packagePeers": [\
           "@types/react",\
