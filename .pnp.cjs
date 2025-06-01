@@ -54,7 +54,8 @@ const RAW_RUNTIME_STATE =
           ["recoil", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:0.7.7"],\
           ["tailwindcss", "npm:4.1.8"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
-          ["vite", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.3.5"]\
+          ["vite", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.3.5"],\
+          ["vite-tsconfig-paths", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.1.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -1837,7 +1838,8 @@ const RAW_RUNTIME_STATE =
           ["recoil", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:0.7.7"],\
           ["tailwindcss", "npm:4.1.8"],\
           ["typescript", "patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"],\
-          ["vite", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.3.5"]\
+          ["vite", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.3.5"],\
+          ["vite-tsconfig-paths", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.1.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -3311,6 +3313,15 @@ const RAW_RUNTIME_STATE =
           ["define-properties", "npm:1.2.1"],\
           ["globalthis", "npm:1.0.4"],\
           ["gopd", "npm:1.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["globrex", [\
+      ["npm:0.1.2", {\
+        "packageLocation": "./.yarn/cache/globrex-npm-0.1.2-ddda94f2d0-a54c029520.zip/node_modules/globrex/",\
+        "packageDependencies": [\
+          ["globrex", "npm:0.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -5493,6 +5504,28 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["tsconfck", [\
+      ["npm:3.1.6", {\
+        "packageLocation": "./.yarn/cache/tsconfck-npm-3.1.6-2dccdb1bd5-269c3c5135.zip/node_modules/tsconfck/",\
+        "packageDependencies": [\
+          ["tsconfck", "npm:3.1.6"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:7f7b7f705b436384832f3df6bbbf65a7bc3907c4306fcc1b73ed9ce52835ff519276d6ac148a5d02837b34bc320631c8ba61542d440b1dcbe0caea66b98fd34a#npm:3.1.6", {\
+        "packageLocation": "./.yarn/__virtual__/tsconfck-virtual-e79407c8bd/0/cache/tsconfck-npm-3.1.6-2dccdb1bd5-269c3c5135.zip/node_modules/tsconfck/",\
+        "packageDependencies": [\
+          ["@types/typescript", null],\
+          ["tsconfck", "virtual:7f7b7f705b436384832f3df6bbbf65a7bc3907c4306fcc1b73ed9ce52835ff519276d6ac148a5d02837b34bc320631c8ba61542d440b1dcbe0caea66b98fd34a#npm:3.1.6"],\
+          ["typescript", null]\
+        ],\
+        "packagePeers": [\
+          "@types/typescript",\
+          "typescript"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["tslib", [\
       ["npm:2.8.1", {\
         "packageLocation": "./.yarn/cache/tslib-npm-2.8.1-66590b21b8-9c4759110a.zip/node_modules/tslib/",\
@@ -5717,6 +5750,31 @@ const RAW_RUNTIME_STATE =
           "terser",\
           "tsx",\
           "yaml"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["vite-tsconfig-paths", [\
+      ["npm:5.1.4", {\
+        "packageLocation": "./.yarn/cache/vite-tsconfig-paths-npm-5.1.4-7b9978a4d1-6228f23155.zip/node_modules/vite-tsconfig-paths/",\
+        "packageDependencies": [\
+          ["vite-tsconfig-paths", "npm:5.1.4"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.1.4", {\
+        "packageLocation": "./.yarn/__virtual__/vite-tsconfig-paths-virtual-7f7b7f705b/0/cache/vite-tsconfig-paths-npm-5.1.4-7b9978a4d1-6228f23155.zip/node_modules/vite-tsconfig-paths/",\
+        "packageDependencies": [\
+          ["@types/vite", null],\
+          ["debug", "virtual:f2d76c84879f7834028b27a57cf9db23b6fd047ecfda157a1932ec281a38221743bb39c3c2b22f13b8a23dee4c4291067c1c5ed46a8b62392f935686eb40b8c4#npm:4.4.1"],\
+          ["globrex", "npm:0.1.2"],\
+          ["tsconfck", "virtual:7f7b7f705b436384832f3df6bbbf65a7bc3907c4306fcc1b73ed9ce52835ff519276d6ac148a5d02837b34bc320631c8ba61542d440b1dcbe0caea66b98fd34a#npm:3.1.6"],\
+          ["vite", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.3.5"],\
+          ["vite-tsconfig-paths", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.1.4"]\
+        ],\
+        "packagePeers": [\
+          "@types/vite",\
+          "vite"\
         ],\
         "linkType": "HARD"\
       }]\

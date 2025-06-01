@@ -37,7 +37,8 @@
     "prettier": "^3.5.3",
     "tailwindcss": "^4.1.8",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "packageManager": "yarn@4.9.1"
 }
