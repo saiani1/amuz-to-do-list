@@ -1,6 +1,6 @@
 import { FaCheck } from 'react-icons/fa6';
 
-type CheckBoxType = {
+type CheckBoxType = React.ComponentProps<'input'> & {
   className?: string;
 };
 
