@@ -8,7 +8,7 @@ body {
   .strike-through::after {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 0;
     height: 2px;
     width: 100%;
