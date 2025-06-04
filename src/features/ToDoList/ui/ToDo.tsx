@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { FaRegSave } from 'react-icons/fa';
+import { FaRegSave, FaStar } from 'react-icons/fa';
 import { MdInfoOutline } from 'react-icons/md';
 
 import type { ToDoType } from '@entities/ToDoList';
@@ -54,13 +54,18 @@ export const ToDo = ({ data }: ToDoCompType) => {
               />
             ) : (
               <CommonButton
-                className={`relative w-fit font-medium text-[17px] text-start transition-colors duration-300 strike-through ${
+                className={`relative flex items-center gap-x-[5px] w-fit font-medium text-[17px] text-start transition-colors duration-300 strike-through ${
                   editData.is_checked
                     ? 'text-gray-400 checked'
                     : 'text-gray-600'
                 }`}
                 onClick={handleClickTodo}
               >
+                {editData.is_important && (
+                  <div className="flex justify-center items-center w-[18px] h-[18px] bg-amber-400 rounded-sm">
+                    <FaStar size="12" fill="#fff" className="-mt-[1px]" />
+                  </div>
+                )}
                 {editData.content}
               </CommonButton>
             )}
