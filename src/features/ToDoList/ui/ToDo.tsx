@@ -64,9 +64,7 @@ export const ToDo = ({ data }: ToDoCompType) => {
                 {editData.content}
               </CommonButton>
             )}
-            <span className="text-[13px] text-gray-400">
-              {editData.created_at}
-            </span>
+            <span className="text-[13px] text-gray-400">{editData.date}</span>
           </motion.div>
           {isEditable && (
             <motion.ul

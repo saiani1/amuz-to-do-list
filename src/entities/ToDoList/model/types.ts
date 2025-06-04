@@ -3,7 +3,7 @@ export type ToDoType = {
   user_id: string;
   category_id: number;
   content: string;
-  created_at: string;
+  date: string;
   is_important: boolean;
   is_checked: boolean;
 };
