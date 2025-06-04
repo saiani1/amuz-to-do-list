@@ -22,11 +22,8 @@ export const ToDo = ({ data }: ToDoCompType) => {
   };
   const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
-    setEditData((prev) => ({ ...prev, isChecked: checked }));
-    console.log('실행된다요!');
+    setEditData((prev) => ({ ...prev, is_checked: checked }));
   };
-
-  console.log('editData', editData);
 
   return (
     <li className="flex items-center gap-x-5">
@@ -42,14 +39,14 @@ export const ToDo = ({ data }: ToDoCompType) => {
             className="relative"
           >
             <CheckBox
-              checked={editData.isChecked}
+              checked={editData.is_checked}
               onChange={handleChangeCheckbox}
             />
           </motion.div>
         )}
         <div className="flex justify-between w-full">
           <motion.div layout className="flex flex-col">
-            {!editData.isChecked && isEditable ? (
+            {!editData.is_checked && isEditable ? (
               <CommonInput
                 className="border-b border-gray-300"
                 value={editData.content}
@@ -58,7 +55,9 @@ export const ToDo = ({ data }: ToDoCompType) => {
             ) : (
               <CommonButton
                 className={`relative w-fit font-medium text-[17px] text-start transition-colors duration-300 strike-through ${
-                  editData.isChecked ? 'text-gray-400 checked' : 'text-gray-600'
+                  editData.is_checked
+                    ? 'text-gray-400 checked'
+                    : 'text-gray-600'
                 }`}
                 onClick={handleClickTodo}
               >
