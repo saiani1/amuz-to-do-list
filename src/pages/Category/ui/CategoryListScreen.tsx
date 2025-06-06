@@ -31,13 +31,17 @@ const CategoryListScreen = () => {
 
   useEffect(() => {
     (async () => {
-      const { data, error } = await supabase.from('categories').select('*');
+      const { data, error } = await supabase
+        .from('categories')
+        .select('*')
+        .eq('user_id', userData!.id);
       if (error) console.log('카테고리 리스트 가져오기 실패');
       if (data) setCategoryData(data);
 
       const { data: todo, error: todoError } = await supabase
         .from('todos')
-        .select('*');
+        .select('*')
+        .eq('user_id', userData!.id);
       if (todoError) console.log('카테고리 리스트 가져오기 실패');
       if (todo) {
         const todoCnt = countData(todo);

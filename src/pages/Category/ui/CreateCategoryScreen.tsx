@@ -33,7 +33,8 @@ const CreateCategoryScreen = () => {
     // 카테고리 리스트를 가져옴 (중복검사)
     let { data: categories, error: categoryError } = await supabase
       .from('categories')
-      .select('name');
+      .select('name')
+      .eq('user_id', userData!.id);
     const isDuplicate = categories?.find((item) => item.name === data.name);
     if (categoryError) console.log('카테고리 리스트 get요청 실패');
     if (isDuplicate) return toast.error('중복되는 카테고리명이 있습니다.');
