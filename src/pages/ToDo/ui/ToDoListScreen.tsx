@@ -25,7 +25,7 @@ const ToDoListScreen = () => {
         </div>
         <div className="flex items-end gap-x-4">
           <div>
-            <h1 className="font-semibold text-[32px] text-white">
+            <h1 className="font-semibold text-[32px] text-white whitespace-nowrap">
               {state.name}
             </h1>
             <span className="-mt-[8px] text-[15px] text-white">
