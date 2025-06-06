@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { IoCloseOutline } from 'react-icons/io5';
 
 import type { CategoryType } from '@entities/Category';
-import { CommonButton, CommonInput } from '@shared/ui';
+import { CommonButton, CommonInput, ImageUploadForm } from '@shared/ui';
 
 const CreateCategoryScreen = () => {
   const {
@@ -55,27 +55,9 @@ const CreateCategoryScreen = () => {
           />
         </div>
         <span className="text-[14px] text-gray-400">카테고리 이미지</span>
-        <div className="flex flex-col justify-center items-center gap-y-6">
-          <div className="flex flex-col items-center gap-y-2">
-            <label
-              htmlFor="imageInput"
-              className="px-4 py-2 text-[14px] font-medium text-white bg-blue-500 rounded-md"
-            >
-              {previewUrl ? '이미지 재업로드' : '이미지 업로드'}
-            </label>
-          </div>
-          {previewUrl && (
-            <div className="flex justify-center items-center w-[200px] h-[200px] rounded-full overflow-hidden bg-white border-3 border-white shadow-md shadow-gray-300">
-              <img src={previewUrl} alt="미리보기 이미지" />
-            </div>
-          )}
-        </div>
-        <CommonInput
-          id="imageInput"
-          type="file"
+        <ImageUploadForm
+          previewUrl={previewUrl}
           onChange={handleChangeFileInput}
-          className={`${previewUrl ? 'opacity-50' : ''} cursor-pointer hidden`}
-          accept="image/*"
         />
       </div>
       <CommonButton

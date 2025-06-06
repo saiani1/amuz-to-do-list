@@ -1,3 +1,4 @@
+export { ImageUploadForm } from './ImageUploadForm';
 export { PlusLinkButton } from './PlusLinkButton';
 export { CheckBox } from './CheckBox';
 export { CommonButton } from './CommonButton';
