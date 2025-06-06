@@ -5,6 +5,8 @@ import ToDoListScreen from '@pages/ToDo/ui/ToDoListScreen';
 import CategoryListScreen from '@pages/Category/ui/CategoryListScreen';
 import { Layout } from './Layout';
 import CreateCategoryScreen from '@pages/Category/ui/CreateCategoryScreen';
+import LoginScreen from '@pages/Login/ui/LoginScreen';
+import { PrivateRoute } from '@features/Auth/lib';
 
 export const router = createBrowserRouter([
   {
@@ -13,19 +15,39 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <CategoryListScreen />,
+        element: (
+          <PrivateRoute>
+            <CategoryListScreen />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: 'login',
+        element: <LoginScreen />,
       },
       {
         path: 'createCategory',
-        element: <CreateCategoryScreen />,
+        element: (
+          <PrivateRoute>
+            <CreateCategoryScreen />
+          </PrivateRoute>
+        ),
       },
       {
         path: ':category_id',
-        element: <ToDoListScreen />,
+        element: (
+          <PrivateRoute>
+            <ToDoListScreen />
+          </PrivateRoute>
+        ),
       },
       {
         path: 'create',
-        element: <CreateToDoScreen />,
+        element: (
+          <PrivateRoute>
+            <CreateToDoScreen />
+          </PrivateRoute>
+        ),
       },
     ],
   },
