@@ -1,13 +1,11 @@
-import { Link } from 'react-router-dom';
 import { IoIosArrowBack, IoIosMenu } from 'react-icons/io';
 import { GrDocumentText } from 'react-icons/gr';
-import { FiPlus } from 'react-icons/fi';
 
 import { ToDoList } from '@features/ToDoList';
 import { DUMMY_TODO } from '@entities/ToDoList';
-import { CommonButton } from '@shared/ui';
+import { CommonButton, PlusLinkButton } from '@shared/ui';
 
-const HomeScreen = () => {
+const ToDoListScreen = () => {
   return (
     <div className="relative flex flex-col w-full h-screen bg-blue-400">
       <div className="fixed flex justify-between px-[20px] pt-[30px] w-full z-200">
@@ -31,14 +29,9 @@ const HomeScreen = () => {
         <ToDoList title="진행중" data={DUMMY_TODO} />
         <ToDoList title="완료" data={DUMMY_TODO} />
       </ul>
-      <Link
-        to="create"
-        className="fixed bottom-[30px] right-[30px] flex justify-center items-center w-[60px] h-[60px] rounded-full bg-blue-400 shadow-md shadow-gray-300 z-200"
-      >
-        <FiPlus size="26" stroke="#fff" />
-      </Link>
+      <PlusLinkButton href="create" />
     </div>
   );
 };
 
-export default HomeScreen;
+export default ToDoListScreen;
