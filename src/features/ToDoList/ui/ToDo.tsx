@@ -1,10 +1,18 @@
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import { AnimatePresence, motion } from 'motion/react';
-import { FaRegSave, FaStar } from 'react-icons/fa';
+import { FaRegSave, FaStar, FaRegTrashAlt } from 'react-icons/fa';
 import { MdInfoOutline } from 'react-icons/md';
 
+import {
+  currentModalAtom,
+  CustomAlert,
+  dataForModalAtom,
+} from '@features/Modal';
 import type { ToDoType } from '@entities/ToDoList';
 import { CheckBox, CommonButton, CommonInput } from '@shared/ui';
+import { deleteToDoIdAtom } from '../model';
+import { Link } from 'react-router-dom';
 
 type ToDoCompType = {
   data: ToDoType;
@@ -13,6 +21,9 @@ type ToDoCompType = {
 export const ToDo = ({ data }: ToDoCompType) => {
   const [isEditable, setIsEditable] = useState(false);
   const [editData, setEditData] = useState(data);
+  const setDeleteToDoId = useSetRecoilState(deleteToDoIdAtom);
+  const setMoal = useSetRecoilState(currentModalAtom);
+  const setModalData = useSetRecoilState(dataForModalAtom);
 
   const handleClickTodo = () => setIsEditable((prev) => !prev);
   const handleClickSave = () => setIsEditable(false);
@@ -23,6 +34,18 @@ export const ToDo = ({ data }: ToDoCompType) => {
   const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
     setEditData((prev) => ({ ...prev, is_checked: checked }));
+  };
+  const handleClickDeleteBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = Number((e.target as HTMLButtonElement).name);
+    setDeleteToDoId(id);
+    setModalData({
+      heading: '알림',
+      desc: '해당 ToDo를 삭제하시겠습니까?',
+      confirm: () => {
+        setDeleteToDoId(null);
+      },
+    });
+    setMoal(() => CustomAlert);
   };
 
   return (
@@ -44,32 +67,34 @@ export const ToDo = ({ data }: ToDoCompType) => {
             />
           </motion.div>
         )}
-        <div className="flex justify-between w-full">
-          <motion.div layout className="flex flex-col">
-            {!editData.is_checked && isEditable ? (
-              <CommonInput
-                className="border-b border-gray-300"
-                value={editData.content}
-                onChange={handleChangeToDo}
-              />
-            ) : (
-              <CommonButton
-                className={`relative flex items-center gap-x-[5px] w-fit font-medium text-[17px] text-start transition-colors duration-300 strike-through ${
-                  editData.is_checked
-                    ? 'text-gray-400 checked'
-                    : 'text-gray-600'
-                }`}
-                onClick={handleClickTodo}
-              >
-                {editData.is_important && (
-                  <div className="flex justify-center items-center w-[18px] h-[18px] bg-amber-400 rounded-sm">
-                    <FaStar size="12" fill="#fff" className="-mt-[1px]" />
-                  </div>
-                )}
-                {editData.content}
-              </CommonButton>
-            )}
-            <span className="text-[13px] text-gray-400">{editData.date}</span>
+        <div className="flex justify-between items-center w-full">
+          <motion.div layout className="flex justify-between w-full">
+            <div className="flex flex-col">
+              {!editData.is_checked && isEditable ? (
+                <CommonInput
+                  className="border-b border-gray-300"
+                  value={editData.content}
+                  onChange={handleChangeToDo}
+                />
+              ) : (
+                <CommonButton
+                  className={`relative flex items-center gap-x-[5px] w-fit font-medium text-[17px] text-start transition-colors duration-300 strike-through ${
+                    editData.is_checked
+                      ? 'text-gray-400 checked'
+                      : 'text-gray-600'
+                  }`}
+                  onClick={handleClickTodo}
+                >
+                  {editData.is_important && (
+                    <div className="flex justify-center items-center w-[18px] h-[18px] bg-amber-400 rounded-sm">
+                      <FaStar size="12" fill="#fff" className="-mt-[1px]" />
+                    </div>
+                  )}
+                  {editData.content}
+                </CommonButton>
+              )}
+              <span className="text-[13px] text-gray-400">{editData.date}</span>
+            </div>
           </motion.div>
           {isEditable && (
             <motion.ul
@@ -81,9 +106,18 @@ export const ToDo = ({ data }: ToDoCompType) => {
               transition={{ duration: 0.2 }}
               className="flex items-center gap-x-1"
             >
-              <li>
-                <CommonButton className="p-1">
+              <li className="flex">
+                <Link to="create" className="mr-1" state={editData}>
                   <MdInfoOutline size="22" fill="#60a5fa" />
+                </Link>
+              </li>
+              <li>
+                <CommonButton
+                  className="pt-1"
+                  name={String(editData.id)}
+                  onClick={handleClickDeleteBtn}
+                >
+                  <FaRegTrashAlt size="18" fill="#60a5fa" />
                 </CommonButton>
               </li>
               <li>
