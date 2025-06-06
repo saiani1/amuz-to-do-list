@@ -1,3 +1,4 @@
+export { SearchBox } from './SearchBox';
 export { ImageUploadForm } from './ImageUploadForm';
 export { PlusLinkButton } from './PlusLinkButton';
 export { CheckBox } from './CheckBox';

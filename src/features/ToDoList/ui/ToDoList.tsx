@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 
-import type { ToDoType } from '@entities/ToDoList';
+import { searchWordAtom, type ToDoType } from '@entities/ToDoList';
 import { ToDo } from './ToDo';
 import { supabase } from '@shared/api';
 
@@ -10,6 +11,7 @@ type ToDoListType = {
 };
 
 export const ToDoList = ({ categoryId, setTaskNum }: ToDoListType) => {
+  const searchKeyword = useRecoilValue(searchWordAtom);
   const [isChanged, setIsChanged] = useState(true);
   const [todoData, setTodoData] = useState<ToDoType[]>();
 
@@ -32,6 +34,16 @@ export const ToDoList = ({ categoryId, setTaskNum }: ToDoListType) => {
       }
     })();
   }, [isChanged]);
+
+  useEffect(() => {
+    if (searchKeyword && todoData) {
+      const filterdData = todoData?.filter((todo) => {
+        return todo.content.includes(searchKeyword);
+      });
+      setTodoData(filterdData);
+    }
+    if (searchKeyword.length === 0) setIsChanged(true);
+  }, [searchKeyword]);
 
   return (
     <li className="bg-white">
