@@ -37,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:8.33.0"],\
           ["@vitejs/plugin-react", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:4.5.0"],\
           ["amuz-to-do-list", "workspace:."],\
+          ["chart.js", "npm:4.4.9"],\
           ["dayjs", "npm:1.11.13"],\
           ["eslint", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:9.28.0"],\
           ["eslint-config-prettier", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:10.1.5"],\
@@ -50,6 +51,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.5.4"],\
           ["prettier", "npm:3.5.3"],\
           ["react", "npm:18.3.1"],\
+          ["react-chartjs-2", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.3.0"],\
           ["react-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:18.3.1"],\
           ["react-hook-form", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:7.57.0"],\
           ["react-icons", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.5.0"],\
@@ -825,6 +827,15 @@ const RAW_RUNTIME_STATE =
           ["@jridgewell/resolve-uri", "npm:3.1.2"],\
           ["@jridgewell/sourcemap-codec", "npm:1.5.0"],\
           ["@jridgewell/trace-mapping", "npm:0.3.25"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@kurkle/color", [\
+      ["npm:0.3.4", {\
+        "packageLocation": "./.yarn/cache/@kurkle-color-npm-0.3.4-fbd637031f-0e9fd55c61.zip/node_modules/@kurkle/color/",\
+        "packageDependencies": [\
+          ["@kurkle/color", "npm:0.3.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1824,6 +1835,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:8.33.0"],\
           ["@vitejs/plugin-react", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:4.5.0"],\
           ["amuz-to-do-list", "workspace:."],\
+          ["chart.js", "npm:4.4.9"],\
           ["dayjs", "npm:1.11.13"],\
           ["eslint", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:9.28.0"],\
           ["eslint-config-prettier", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:10.1.5"],\
@@ -1837,6 +1849,7 @@ const RAW_RUNTIME_STATE =
           ["postcss", "npm:8.5.4"],\
           ["prettier", "npm:3.5.3"],\
           ["react", "npm:18.3.1"],\
+          ["react-chartjs-2", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.3.0"],\
           ["react-dom", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:18.3.1"],\
           ["react-hook-form", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:7.57.0"],\
           ["react-icons", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.5.0"],\
@@ -2176,6 +2189,16 @@ const RAW_RUNTIME_STATE =
           ["ansi-styles", "npm:4.3.0"],\
           ["chalk", "npm:4.1.2"],\
           ["supports-color", "npm:7.2.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["chart.js", [\
+      ["npm:4.4.9", {\
+        "packageLocation": "./.yarn/cache/chart.js-npm-4.4.9-fa2486800b-970e06bf1f.zip/node_modules/chart.js/",\
+        "packageDependencies": [\
+          ["@kurkle/color", "npm:0.3.4"],\
+          ["chart.js", "npm:4.4.9"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4764,6 +4787,32 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["loose-envify", "npm:1.4.0"],\
           ["react", "npm:18.3.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["react-chartjs-2", [\
+      ["npm:5.3.0", {\
+        "packageLocation": "./.yarn/cache/react-chartjs-2-npm-5.3.0-f94bd8a632-4415d40217.zip/node_modules/react-chartjs-2/",\
+        "packageDependencies": [\
+          ["react-chartjs-2", "npm:5.3.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.3.0", {\
+        "packageLocation": "./.yarn/__virtual__/react-chartjs-2-virtual-c91492edee/0/cache/react-chartjs-2-npm-5.3.0-f94bd8a632-4415d40217.zip/node_modules/react-chartjs-2/",\
+        "packageDependencies": [\
+          ["@types/chart.js", null],\
+          ["@types/react", "npm:18.3.23"],\
+          ["chart.js", "npm:4.4.9"],\
+          ["react", "npm:18.3.1"],\
+          ["react-chartjs-2", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:5.3.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/chart.js",\
+          "@types/react",\
+          "chart.js",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
