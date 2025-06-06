@@ -1,5 +1,5 @@
 export type ToDoType = {
-  id: number;
+  id?: number;
   user_id: string;
   category_id: number;
   content: string;
