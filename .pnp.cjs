@@ -37,6 +37,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:8.33.0"],\
           ["@vitejs/plugin-react", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:4.5.0"],\
           ["amuz-to-do-list", "workspace:."],\
+          ["dayjs", "npm:1.11.13"],\
           ["eslint", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:9.28.0"],\
           ["eslint-config-prettier", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:10.1.5"],\
           ["eslint-plugin-jsx-a11y", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.10.2"],\
@@ -1823,6 +1824,7 @@ const RAW_RUNTIME_STATE =
           ["@typescript-eslint/parser", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:8.33.0"],\
           ["@vitejs/plugin-react", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:4.5.0"],\
           ["amuz-to-do-list", "workspace:."],\
+          ["dayjs", "npm:1.11.13"],\
           ["eslint", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:9.28.0"],\
           ["eslint-config-prettier", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:10.1.5"],\
           ["eslint-plugin-jsx-a11y", "virtual:1635ab6c904558cf046ffa1b9c3ffabeb142b27c4d68dc446774f3a54ed9b584d9a746e6b422a61c3a15f86ec3a0e75da24ec276d7ddcbe494036a9e489db764#npm:6.10.2"],\
@@ -2295,6 +2297,15 @@ const RAW_RUNTIME_STATE =
           ["data-view-byte-offset", "npm:1.0.1"],\
           ["es-errors", "npm:1.3.0"],\
           ["is-data-view", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["dayjs", [\
+      ["npm:1.11.13", {\
+        "packageLocation": "./.yarn/cache/dayjs-npm-1.11.13-d478bb9479-a3caf6ac83.zip/node_modules/dayjs/",\
+        "packageDependencies": [\
+          ["dayjs", "npm:1.11.13"]\
         ],\
         "linkType": "HARD"\
       }]\
