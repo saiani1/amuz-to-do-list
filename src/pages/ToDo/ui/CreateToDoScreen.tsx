@@ -1,47 +1,69 @@
 import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { IoCloseOutline } from 'react-icons/io5';
 import { FaRegBell, FaRegStar } from 'react-icons/fa';
 import { TbTag } from 'react-icons/tb';
+import dayjs from 'dayjs';
+import { toast } from 'react-hot-toast';
+import { useRecoilValue } from 'recoil';
 
 import { CategorySelectBox, type CategorySelectType } from '@features/Category';
 import { CreateLi } from '@features/CreateTodo';
-import { DUMMY_CATEGORY } from '@entities/Category';
+import type { CategoryType } from '@entities/Category';
 import { convertToDatetimeLocal, type ToDoType } from '@entities/ToDoList';
+import { UserDataAtom } from '@entities/User';
 import { CommonButton, CommonInput } from '@shared/ui';
+import { supabase } from '@shared/api';
 
 const CreateToDoScreen = () => {
+  const navigate = useNavigate();
   const { state } = useLocation();
+  const userData = useRecoilValue(UserDataAtom);
   const [clickedCategory, setClickedCategory] = useState<CategorySelectType>({
     id: 0,
     name: '카테고리',
   });
+  const [categoryData, setCategoryData] = useState<CategoryType[]>();
+
   const {
     watch,
     setValue,
     reset,
     register,
     handleSubmit,
-    formState: { isDirty, errors },
+    formState: { errors },
   } = useForm<ToDoType>({ mode: 'onChange' });
 
+  const isError = Object.keys(errors).length !== 0;
+  const disabledCondition =
+    isError || clickedCategory.id === 0 || watch('date').length === 0;
+
   useEffect(() => {
-    if (state) {
-      const transformDate = convertToDatetimeLocal(state.date);
-      const transformToDo = {
-        ...state,
-        date: transformDate,
-      };
-      reset(transformToDo);
-      const filterCategory = DUMMY_CATEGORY.find(
-        (category) => category.id === state.category_id
-      );
-      setClickedCategory({
-        id: state.category_id,
-        name: filterCategory!.name,
-      });
-    }
+    (async () => {
+      const { data: categories, error: categoryError } = await supabase
+        .from('categories')
+        .select('*');
+      if (categoryError) console.log('카테고리 리스트 가져오기 실패');
+      if (categories) {
+        setCategoryData(categories);
+        if (state) {
+          const transformDate = convertToDatetimeLocal(state.date);
+          const transformToDo = {
+            ...state,
+            date: transformDate,
+          };
+          reset(transformToDo);
+          const filterCategory = categories?.find(
+            (category) => category.id === state.category_id
+          );
+          setClickedCategory({
+            id: state.category_id,
+            name: filterCategory!.name,
+          });
+        }
+      }
+    })();
   }, []);
 
   useEffect(() => {
@@ -53,9 +75,45 @@ const CreateToDoScreen = () => {
     setValue('is_important', !value);
   };
 
-  const submit = (data: ToDoType) => {
+  const submit = async (data: ToDoType) => {
     console.log('data', data);
+    const transformDate = dayjs(data.date).format('YYYY.MM.DD AHH:mm');
+    if (state) {
+      const transformData = {
+        ...data,
+        date: transformDate,
+      };
+      const { error } = await supabase
+        .from('todos')
+        .update([transformData])
+        .eq('id', data.id)
+        .select();
+      if (error) console.log(error);
+      else {
+        toast.success('todo가 수정되었습니다.');
+        navigate(-1);
+      }
+    } else {
+      const transformObj = {
+        ...data,
+        date: transformDate,
+        is_checked: false,
+        user_id: userData?.id,
+        is_important: data.is_important ?? false,
+      };
+      const { error } = await supabase
+        .from('todos')
+        .insert([transformObj])
+        .select();
+      if (error) console.log(error);
+      else {
+        toast.success('todo가 추가되었습니다.');
+        navigate(-1);
+      }
+    }
   };
+
+  const handleClickBack = () => navigate(-1);
 
   return (
     <form
@@ -66,9 +124,12 @@ const CreateToDoScreen = () => {
         <h1 className="text-gray-800 text-[20px]">
           {state ? '일정 수정하기' : '새 일정 만들기'}
         </h1>
-        <Link to="/" className="absolute right-[10px]">
+        <CommonButton
+          className="absolute right-[10px]"
+          onClick={handleClickBack}
+        >
           <IoCloseOutline size="30" stroke="#555" />
-        </Link>
+        </CommonButton>
       </div>
       <div className="flex flex-col px-[30px] py-[50px] gap-y-[30px]">
         <div className="group">
@@ -101,11 +162,13 @@ const CreateToDoScreen = () => {
             />
           </CreateLi>
           <CreateLi liStyle="gap-x-3 font-medium" Icon={TbTag} iconSize="22">
-            <CategorySelectBox
-              data={DUMMY_CATEGORY}
-              clickedOption={clickedCategory}
-              setClickedOption={setClickedCategory}
-            />
+            {categoryData && (
+              <CategorySelectBox
+                data={categoryData}
+                clickedOption={clickedCategory}
+                setClickedOption={setClickedCategory}
+              />
+            )}
           </CreateLi>
           <CreateLi
             liStyle="gap-x-6 text-gray-400"
@@ -123,8 +186,8 @@ const CreateToDoScreen = () => {
       </div>
       <CommonButton
         type="submit"
-        disabled={Object.keys(errors).length !== 0 || !isDirty}
-        className={`absolute bottom-0 py-[10px] w-full text-white text-[18px] font-medium ${Object.keys(errors).length || !isDirty ? 'bg-gray-400' : 'bg-blue-400'}`}
+        disabled={disabledCondition}
+        className={`absolute bottom-0 py-[10px] w-full text-white text-[18px] font-medium ${disabledCondition ? 'bg-gray-400' : 'bg-blue-400'}`}
       >
         {state ? '수정' : '생성'}
       </CommonButton>

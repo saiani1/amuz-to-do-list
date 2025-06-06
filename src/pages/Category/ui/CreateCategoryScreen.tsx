@@ -1,17 +1,23 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useRecoilValue } from 'recoil';
 import { IoCloseOutline } from 'react-icons/io5';
+import { toast } from 'react-hot-toast';
 
 import type { CategoryType } from '@entities/Category';
+import { UserDataAtom } from '@entities/User';
 import { CommonButton, CommonInput, ImageUploadForm } from '@shared/ui';
+import { supabase } from '@shared/api';
 
 const CreateCategoryScreen = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<CategoryType>({ mode: 'onChange' });
+  const userData = useRecoilValue(UserDataAtom);
   const [previewUrl, setPreviewUrl] = useState('');
   const [imageFile, setImageFile] = useState<File>();
 
@@ -23,8 +29,37 @@ const CreateCategoryScreen = () => {
     setPreviewUrl(preview);
   };
 
-  const submit = (data: CategoryType) => {
-    console.log('imageFile', imageFile, 'data', data);
+  const submit = async (data: CategoryType) => {
+    // 카테고리 리스트를 가져옴 (중복검사)
+    let { data: categories, error: categoryError } = await supabase
+      .from('categories')
+      .select('name');
+    const isDuplicate = categories?.find((item) => item.name === data.name);
+    if (categoryError) console.log('카테고리 리스트 get요청 실패');
+    if (isDuplicate) return toast.error('중복되는 카테고리명이 있습니다.');
+
+    // supabase storage에 이미지 업로드
+    const {} = await supabase.storage
+      .from('category')
+      .upload(`${userData!.email}/${categories!.length + 1}`, imageFile!);
+    // 업로드 된 이미지 url반환
+    const publicUrl = supabase.storage
+      .from('category')
+      .getPublicUrl(`${userData!.email}/${categories!.length + 1}`)
+      .data.publicUrl;
+    // categories테이블에 카테고리 추가
+    const { error } = await supabase
+      .from('categories')
+      .insert([
+        {
+          user_id: userData?.id,
+          name: data.name,
+          category_image_url: publicUrl,
+        },
+      ])
+      .select();
+    if (!error) toast.success('카테고리가 생성되었습니다.');
+    navigate('/');
   };
 
   return (

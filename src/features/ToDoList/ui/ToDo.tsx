@@ -3,6 +3,8 @@ import { useSetRecoilState } from 'recoil';
 import { AnimatePresence, motion } from 'motion/react';
 import { FaRegSave, FaStar, FaRegTrashAlt } from 'react-icons/fa';
 import { MdInfoOutline } from 'react-icons/md';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 import {
   currentModalAtom,
@@ -11,38 +13,65 @@ import {
 } from '@features/Modal';
 import type { ToDoType } from '@entities/ToDoList';
 import { CheckBox, CommonButton, CommonInput } from '@shared/ui';
-import { deleteToDoIdAtom } from '../model';
-import { Link } from 'react-router-dom';
+import { supabase } from '@shared/api';
 
 type ToDoCompType = {
   data: ToDoType;
+  setIsChanged: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const ToDo = ({ data }: ToDoCompType) => {
+export const ToDo = ({ data, setIsChanged }: ToDoCompType) => {
   const [isEditable, setIsEditable] = useState(false);
-  const [editData, setEditData] = useState(data);
-  const setDeleteToDoId = useSetRecoilState(deleteToDoIdAtom);
+  const [editData, setEditData] = useState<string>(data.content);
   const setMoal = useSetRecoilState(currentModalAtom);
   const setModalData = useSetRecoilState(dataForModalAtom);
 
   const handleClickTodo = () => setIsEditable((prev) => !prev);
-  const handleClickSave = () => setIsEditable(false);
+
+  const handleClickSave = async () => {
+    if (editData.length === 0) return;
+    const { error } = await supabase
+      .from('todos')
+      .update({ content: editData })
+      .eq('id', data.id);
+    if (error) console.log(error);
+    else {
+      setIsChanged(true);
+      toast.success('todo내용이 수정되었습니다.');
+    }
+    setIsEditable(false);
+  };
+
   const handleChangeToDo = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setEditData((prev) => ({ ...prev, content: value }));
+    setEditData(value);
   };
-  const handleChangeCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleChangeCheckbox = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const checked = e.target.checked;
-    setEditData((prev) => ({ ...prev, is_checked: checked }));
+    const { error } = await supabase
+      .from('todos')
+      .update({ is_checked: checked })
+      .eq('id', data.id);
+    if (error) console.log(error);
+    else setIsChanged(true);
   };
+
   const handleClickDeleteBtn = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const id = Number((e.target as HTMLButtonElement).name);
-    setDeleteToDoId(id);
+    const id = (e.target as HTMLButtonElement).name;
+    console.log('id', id);
     setModalData({
       heading: '알림',
       desc: '해당 ToDo를 삭제하시겠습니까?',
-      confirm: () => {
-        setDeleteToDoId(null);
+      confirm: async () => {
+        const { error } = await supabase.from('todos').delete().eq('id', id);
+        if (error) console.log(error);
+        else {
+          toast.success('todo가 삭제되었습니다.');
+          setIsChanged(true);
+        }
       },
     });
     setMoal(() => CustomAlert);
@@ -62,7 +91,7 @@ export const ToDo = ({ data }: ToDoCompType) => {
             className="relative"
           >
             <CheckBox
-              checked={editData.is_checked}
+              checked={data.is_checked}
               onChange={handleChangeCheckbox}
             />
           </motion.div>
@@ -70,30 +99,28 @@ export const ToDo = ({ data }: ToDoCompType) => {
         <div className="flex justify-between items-center w-full">
           <motion.div layout className="flex justify-between w-full">
             <div className="flex flex-col">
-              {!editData.is_checked && isEditable ? (
+              {!data.is_checked && isEditable ? (
                 <CommonInput
                   className="border-b border-gray-300"
-                  value={editData.content}
+                  value={editData}
                   onChange={handleChangeToDo}
                 />
               ) : (
                 <CommonButton
                   className={`relative flex items-center gap-x-[5px] w-fit font-medium text-[17px] text-start transition-colors duration-300 strike-through ${
-                    editData.is_checked
-                      ? 'text-gray-400 checked'
-                      : 'text-gray-600'
+                    data.is_checked ? 'text-gray-400 checked' : 'text-gray-600'
                   }`}
                   onClick={handleClickTodo}
                 >
-                  {editData.is_important && (
+                  {data.is_important && (
                     <div className="flex justify-center items-center w-[18px] h-[18px] bg-amber-400 rounded-sm">
                       <FaStar size="12" fill="#fff" className="-mt-[1px]" />
                     </div>
                   )}
-                  {editData.content}
+                  {data.content}
                 </CommonButton>
               )}
-              <span className="text-[13px] text-gray-400">{editData.date}</span>
+              <span className="text-[13px] text-gray-400">{data.date}</span>
             </div>
           </motion.div>
           {isEditable && (
@@ -107,17 +134,21 @@ export const ToDo = ({ data }: ToDoCompType) => {
               className="flex items-center gap-x-1"
             >
               <li className="flex">
-                <Link to="create" className="mr-1" state={editData}>
+                <Link to="/create" className="mr-1" state={data}>
                   <MdInfoOutline size="22" fill="#60a5fa" />
                 </Link>
               </li>
               <li>
                 <CommonButton
                   className="pt-1"
-                  name={String(editData.id)}
+                  name={String(data.id)}
                   onClick={handleClickDeleteBtn}
                 >
-                  <FaRegTrashAlt size="18" fill="#60a5fa" />
+                  <FaRegTrashAlt
+                    size="18"
+                    fill="#60a5fa"
+                    className="pointer-events-none"
+                  />
                 </CommonButton>
               </li>
               <li>
