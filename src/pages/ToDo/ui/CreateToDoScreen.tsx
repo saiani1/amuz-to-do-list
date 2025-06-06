@@ -43,7 +43,8 @@ const CreateToDoScreen = () => {
     (async () => {
       const { data: categories, error: categoryError } = await supabase
         .from('categories')
-        .select('*');
+        .select('*')
+        .eq('user_id', userData!.id);
       if (categoryError) console.log('카테고리 리스트 가져오기 실패');
       if (categories) {
         setCategoryData(categories);
