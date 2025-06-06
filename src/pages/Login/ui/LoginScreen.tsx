@@ -101,9 +101,13 @@ const LoginScreen = () => {
               .from('thumbnail')
               .getPublicUrl(`${formData.email}/thumbnail`).data.publicUrl;
 
+            // nickname호출
+            let { data: users } = await supabase
+              .from('users')
+              .select('nickname');
             setUserData({
               id: user.id,
-              nickname: formData.nickname,
+              nickname: users![0].nickname,
               profile_image_url: publicUrl,
             });
             navigate('/');
