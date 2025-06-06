@@ -35,19 +35,18 @@ const CreateCategoryScreen = () => {
       .from('categories')
       .select('name');
     const isDuplicate = categories?.find((item) => item.name === data.name);
-    console.log('categories', categories);
-    console.log('isDuplicate', isDuplicate);
     if (categoryError) console.log('카테고리 리스트 get요청 실패');
     if (isDuplicate) return toast.error('중복되는 카테고리명이 있습니다.');
 
     // supabase storage에 이미지 업로드
     const {} = await supabase.storage
       .from('category')
-      .upload(`${userData!.email}/${data.id}`, imageFile!);
+      .upload(`${userData!.email}/${categories!.length + 1}`, imageFile!);
     // 업로드 된 이미지 url반환
     const publicUrl = supabase.storage
       .from('category')
-      .getPublicUrl(`${userData!.email}/${data.id}`).data.publicUrl;
+      .getPublicUrl(`${userData!.email}/${categories!.length + 1}`)
+      .data.publicUrl;
     // categories테이블에 카테고리 추가
     const { error } = await supabase
       .from('categories')
