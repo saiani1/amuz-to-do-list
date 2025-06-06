@@ -1,9 +1,9 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 
 import { ToDoList } from '@features/ToDoList';
-import { PlusLinkButton } from '@shared/ui';
-import { useState } from 'react';
+import { PlusLinkButton, SearchBox } from '@shared/ui';
 
 const ToDoListScreen = () => {
   const { state } = useLocation();
@@ -23,11 +23,16 @@ const ToDoListScreen = () => {
         <div className="flex justify-center items-center w-[46px] h-[46px] rounded-full bg-white overflow-hidden border-3 border-white shadow-md">
           <img src={state.category_image_url} alt={state.name} />
         </div>
-        <div className="flex flex-col">
-          <h1 className="font-semibold text-[32px] text-white">{state.name}</h1>
-          <span className="-mt-[8px] text-[15px] text-white">
-            {taskNum} Tasks
-          </span>
+        <div className="flex items-end gap-x-4">
+          <div>
+            <h1 className="font-semibold text-[32px] text-white">
+              {state.name}
+            </h1>
+            <span className="-mt-[8px] text-[15px] text-white">
+              {taskNum} Tasks
+            </span>
+          </div>
+          <SearchBox />
         </div>
       </div>
       <ul className="absolute bottom-0 w-full h-[60%] px-[45px] py-[30px] bg-white rounded-t-2xl z-100">
