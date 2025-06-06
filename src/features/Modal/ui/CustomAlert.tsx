@@ -15,7 +15,6 @@ export const CustomAlert = () => {
   const { heading, desc, confirm } = useRecoilValue(
     dataForModalAtom
   ) as CustomAlertType;
-  console.log('modal', modal);
 
   const handleConfirm = () => {
     if (confirm) {
