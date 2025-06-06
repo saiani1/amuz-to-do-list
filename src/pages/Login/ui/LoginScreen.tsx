@@ -46,7 +46,7 @@ const LoginScreen = () => {
       try {
         // 회원가입 api호출
         let { data, error } = await supabase.auth.signUp({
-          email: formData.email,
+          email: formData.email!,
           password: formData.password,
         });
         if (error) return toast.error('회원가입 실패');
@@ -76,6 +76,7 @@ const LoginScreen = () => {
           if (error) return toast.error('사용자 데이터 입력 실패');
           setUserData({
             id: user.id,
+            email: formData.email,
             nickname: formData.nickname,
             profile_image_url: publicUrl,
           });
@@ -89,7 +90,7 @@ const LoginScreen = () => {
       // 로그인 api호출
       try {
         let { data, error } = await supabase.auth.signInWithPassword({
-          email: formData.email,
+          email: formData.email!,
           password: formData.password,
         });
         if (error) return toast.error('로그인 실패');
@@ -107,6 +108,7 @@ const LoginScreen = () => {
               .select('nickname');
             setUserData({
               id: user.id,
+              email: formData.email,
               nickname: users![0].nickname,
               profile_image_url: publicUrl,
             });
