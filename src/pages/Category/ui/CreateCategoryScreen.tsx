@@ -23,7 +23,9 @@ const CreateCategoryScreen = () => {
     setPreviewUrl(preview);
   };
 
-  const submit = (data: CategoryType) => {};
+  const submit = (data: CategoryType) => {
+    console.log('imageFile', imageFile);
+  };
 
   return (
     <form
