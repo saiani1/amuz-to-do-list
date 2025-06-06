@@ -2,16 +2,10 @@ import { CommonButton } from '@shared/ui';
 import { IoIosInformationCircle } from 'react-icons/io';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import {
-  closeModal,
-  currentModalAtom,
-  dataForModalAtom,
-  type CustomAlertType,
-} from '../model';
+import { closeModal, dataForModalAtom, type CustomAlertType } from '../model';
 
 export const CustomAlert = () => {
   const close = useSetRecoilState(closeModal);
-  const modal = useRecoilValue(currentModalAtom);
   const { heading, desc, confirm } = useRecoilValue(
     dataForModalAtom
   ) as CustomAlertType;
