@@ -24,7 +24,7 @@ const CreateCategoryScreen = () => {
   };
 
   const submit = (data: CategoryType) => {
-    console.log('imageFile', imageFile);
+    console.log('imageFile', imageFile, 'data', data);
   };
 
   return (
