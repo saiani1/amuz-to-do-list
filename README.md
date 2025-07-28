@@ -1,5 +1,4 @@
 # To Do List
-- 배포URL: [https://amuz-to-do-list.vercel.app](https://amuz-to-do-list.vercel.app/)
 - 사용기술: React.js, TypeScript, Tailwind.css, Recoil, Supabase(DB)
 ### 사용법
 1. 로그인/회원가입
